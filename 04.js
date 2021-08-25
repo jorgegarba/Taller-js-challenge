@@ -6,12 +6,28 @@
  */
 
 let original = [-4, 8, -9, 2, -5, 8, -4, 9];
-let sums = [];
-let posFinalMax = -1;
-original.forEach((n, i) => {
-	let sum = 0;
-	for (let j = 0; j <= i; j++) {
-		sum += original[j];
+let subarrays = [];
+original.forEach((n, index) => {
+	let arrayTemp = [];
+	for (let j = index; j < original.length; j++) {
+		arrayTemp.push(original[j]);
 	}
-  sums.push(sum)
+	subarrays.push(arrayTemp);
 });
+
+let max = -9999;
+let positionMax = -1;
+subarrays.forEach((array, pos) => {
+	let sumTmp = array.reduce((prev, actual) => prev + actual, 0);
+	if (sumTmp > max) {
+		positionMax = pos;
+		max = sumTmp;
+	}
+});
+
+console.log(subarrays[positionMax]);
+console.log(
+	`[${subarrays[
+		positionMax
+	].toString()}] is our maximun subarray and its sum is ${max}`
+);
