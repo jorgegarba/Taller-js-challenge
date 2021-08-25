@@ -24,8 +24,6 @@ subarrays.forEach((array, pos) => {
 		max = sumTmp;
 	}
 });
-
-console.log(subarrays[positionMax]);
 console.log(
 	`[${subarrays[
 		positionMax
